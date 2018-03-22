@@ -6,8 +6,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
@@ -58,7 +56,23 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+    if(!audio) return; // Stop the function from running if a key outside of the ones defiend is pushed. 
+    audio.currentTime = 0 // Rewind the pushed sound to the start, so user can actually push the same key multiple times in succession without having to wait for the audio clip to stop.
+    audio.play();
+    key.classList.add('playing'); 
+  };
 
+  function removeTransition(e) {
+    if(e.propertyName !== 'transform') return; // Skip if it's not a transform;
+    this.classList.remove('playing');
+  };
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound);
 </script>
 
 
