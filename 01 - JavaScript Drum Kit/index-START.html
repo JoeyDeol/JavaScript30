@@ -63,6 +63,11 @@
     audio.currentTime = 0 // Rewind the pushed sound to the start, so user can actually push the same key multiple times in succession without having to wait for the audio clip to stop.
     audio.play();
     key.classList.add('playing'); 
+    // Below code is the beginnings of making looping buttons to add to the drum machine
+    // audio.addEventListener('ended', function () {
+    //   audio.currentTime = 0;
+    //   audio.play();
+    // }, false);
   };
 
   function removeTransition(e) {
