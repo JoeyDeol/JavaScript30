@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Array Cardio 💪</title>
+  <title>Array Cardio 💪 - Joey Deol</title>
 </head>
 <body>
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
@@ -31,9 +31,21 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    function filterInventors(){
+      const filteredInventor = inventors.filter((inventor) => {
+        return inventor.year >= 1500 && inventor.year < 1600;
+      })
+      return filteredInventor;
+    }
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+    function inventorNames() {
+      const inventorFirstLast = inventors.map((inventor) => {
+        return `${inventor.first} ${inventor.last}`
+      })
+      return inventorFirstLast;
+    }
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
